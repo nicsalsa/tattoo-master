@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_045507) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_18_050406) do
+  create_table "appointments", force: :cascade do |t|
+    t.integer "artist_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "date_time"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_appointments_on_artist_id"
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.string "item_name"
+    t.string "item_description"
+    t.integer "item_price_cents"
+    t.integer "quantity"
+    t.datetime "last_updated"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,4 +45,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_045507) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "artists"
+  add_foreign_key "appointments", "clients"
 end

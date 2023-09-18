@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: one
+  client: one
+  date_time: 2023-09-17 22:02:23
+  status: MyString
+
+two:
+  artist: two
+  client: two
+  date_time: 2023-09-17 22:02:23
+  status: MyString
